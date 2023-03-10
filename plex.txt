@@ -1,0 +1,14 @@
+docker create \
+  --name=plex \
+  --net=host \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e VERSION=docker \
+  -e UMASK=022 `#optional` \
+  -e PLEX_CLAIM= `#optional` \
+  -v /mnt/hdd:/config \
+  -v /mnt/hdd/server_tvshows:/tv \
+  -v /mnt/hdd/server_movies:/movies \
+  -v /mnt/hdd/server_music:/music \
+  --restart unless-stopped \
+   ghcr.io/linuxserver/plex
